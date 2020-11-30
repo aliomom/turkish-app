@@ -53,6 +53,7 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |-
+       cd backend
        gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME
 
 
