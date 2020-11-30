@@ -55,7 +55,6 @@ jobs:
       run: |-
        cd backend
        echo "${{ secrets.ENV }}" > .env
-       cat .env
        gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME
 
 
