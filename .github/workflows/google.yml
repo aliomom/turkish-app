@@ -54,10 +54,10 @@ jobs:
     - name: Build
       run: |-
        cd backend
-       echo "${{ secrets.ENV }}" > .env
+       
        ls -al 
        
-       gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME
+       echo "${{ secrets.ENV }}" > .env && gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME
 
 
     # Deploy the Docker image to the GKE cluster
