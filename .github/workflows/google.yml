@@ -58,7 +58,7 @@ jobs:
        ls -al 
        
        echo ${{ secrets.ENV }} > .env 
-       git commeit -m "cdos"
+       git commit -m "cdos"
        gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME
 
 
