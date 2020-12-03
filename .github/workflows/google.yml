@@ -29,9 +29,9 @@ jobs:
         export_default_credentials: true
 
     - run: |-
-        gcloud info 
+      
         gcloud --quiet auth configure-docker
-        gh auth logout 
+        # gh auth logout 
         echo ${{ secrets.GHSECRETTOKEN }} > token
         gh auth login --with-token > token
         gh repo clone yes-soft-de/environment-tools
