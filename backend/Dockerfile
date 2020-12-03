@@ -10,11 +10,11 @@ FROM php:7.4-apache
 RUN apt-get update && apt-get install -y build-essential libssl-dev zlib1g-dev libpng-dev libjpeg-dev libfreetype6-dev
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY . /var/www/html
-RUN ls -al 
-COPY .env  /var/www/html
-#COPY --from=gcr.io/yescloud/turk ./.env /var/www/html
-COPY --from=gcr.io/yescloud/turk ./.htaccess /var/www/html/public
-COPY --from=gcr.io/yescloud/turk ./jwt/ /var/www/html/config/jwt
+#RUN ls -al 
+#COPY .env  /var/www/html
+COPY --from=fireplacehere ./.env /var/www/html
+COPY --from=fireplacehere ./.htaccess /var/www/html/public
+COPY --from=fireplacehere ./jwt/ /var/www/html/config/jwt
 RUN chown -R www-data:www-data /var && chmod -R g+rw /var
 COPY --from=vendor /tmp/vendor/ /var/www/html/vendor/
 RUN docker-php-ext-install mysqli pdo pdo_mysql
