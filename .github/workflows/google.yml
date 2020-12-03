@@ -32,7 +32,7 @@ jobs:
         gcloud info 
         gcloud --quiet auth configure-docker
         gh auth logout 
-        echo ${{ secret.GHSECRETTOKEN }} > token
+        echo ${{ secrets.GHSECRETTOKEN }} > token
         gh auth login --with-token > token
         gh repo clone yes-soft-de/environment-tools
         cd $DEPLOYMENT_NAME
