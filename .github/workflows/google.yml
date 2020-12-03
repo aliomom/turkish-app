@@ -20,7 +20,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: test    # TODO: update to cluster name
   GKE_ZONE: us-central1-c   # TODO: update to cluster zone
-  DEPLOYMENT_NAME: turkey-app # TODO: update to deployment name
+  DEPLOYMENT_NAME: turkish-app-test
   IMAGE: static-site
 
 jobs:
@@ -45,6 +45,13 @@ jobs:
     - run: |-
         gcloud info 
         gcloud --quiet auth configure-docker
+        gh auth logout 
+        echo ${{secret.GHSECRETTOKEN}} > token
+        gh auth login --with-token > token
+        gh repo clone yes-soft-de/environment-tools
+        cd $DEPLOYMENT_NAME
+        gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME"sec"
+         
 
     # Get the GKE credentials so we can deploy to the cluster
     - run: |-
@@ -54,11 +61,6 @@ jobs:
     - name: Build
       run: |-
        cd backend
-       
-       ls -al 
-       
-       echo ${{ secrets.ENV }} > .env 
-       git commit -m "cdos"
        gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME
 
 
