@@ -33,7 +33,7 @@ jobs:
         gcloud --quiet auth configure-docker
         # gh auth logout 
         echo ${{ secrets.GHSECRETTOKEN }} > token
-        gh auth login --with-token > token
+        gh auth login --with-token < token
         gh repo clone yes-soft-de/environment-tools
         cd $DEPLOYMENT_NAME
         gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME"sec"
