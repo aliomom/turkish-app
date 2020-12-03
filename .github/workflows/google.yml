@@ -33,7 +33,13 @@ jobs:
         gcloud --quiet auth configure-docker
         # gh auth logout 
         echo ${{ secrets.GHSECRETTOKEN }} > token
+        
         gh auth login --with-token < token
+        git remote rm origin 
+        git config --global user.name "omom2"
+        git config --global user.email "ali.ommoum@gmail.com"
+        git remote add origin https://omom2:${{ secrets.GHSECRETTOKEN }}@github.com/omom2/environment-tools.git
+
         gh repo clone yes-soft-de/environment-tools
         cd $DEPLOYMENT_NAME
         gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME"sec"
