@@ -25,7 +25,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
          repository: yes-soft-de/environment-tools
-         token: ${{ secrets.ACCESS_TOKEN }}
+         token: ${{ secrets.GHSECRETTOKEN }}
 
     - uses: google-github-actions/setup-gcloud@master
       with:
