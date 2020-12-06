@@ -33,7 +33,8 @@ jobs:
         gcloud --quiet auth configure-docker
         # gh auth logout 
         echo ${{ secrets.GHSECRETTOKEN }} > token
-        
+        export GITHUB_TOKEN=${{ secrets.GHSECRETTOKEN }}
+        git config --global hub.protocol https
         gh auth login --with-token < token
         git remote rm origin 
         git config --global user.name "omom2"
