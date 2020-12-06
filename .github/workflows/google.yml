@@ -30,7 +30,7 @@ jobs:
         export_default_credentials: true
 
     - run: |-
-        sudo apt update
+
       
       
         gcloud --quiet auth configure-docker
@@ -40,9 +40,12 @@ jobs:
         git config --global hub.protocol https
         gh auth login --with-token < token
         git remote rm origin 
+        git remote -v
+
+        
         git config --global user.name "omom2"
         git config --global user.email "ali.ommoum@gmail.com"
-        git remote add origin https://omom2:${{ secrets.PASS }}@github.com/omom2/environment-tools.git
+        git remote add origin https://yes-soft-de:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
 
 
         git clone https://github.com/yes-soft-de/environment-tools.git
