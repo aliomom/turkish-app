@@ -30,6 +30,8 @@ jobs:
         export_default_credentials: true
 
     - run: |-
+       apt update
+      
       
         gcloud --quiet auth configure-docker
         # gh auth logout 
