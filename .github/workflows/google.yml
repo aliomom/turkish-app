@@ -45,7 +45,7 @@ jobs:
         
         git config --global user.name "omom2"
         git config --global user.email "ali.ommoum@gmail.com"
-        git remote add origin https://yes-soft-de:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
+        git remote add origin https://omom2:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
 
 
         git clone https://github.com/yes-soft-de/environment-tools.git
