@@ -47,6 +47,8 @@ jobs:
         git config --global user.email "ali.ommoum@gmail.com"
         #git remote add origin https://omom2:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
 
+        git config --global http.proxy http://proxyuser:proxypwd@proxy.server.com:8080
+
 
         git clone  https://omom2:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
         #git clone git@github.com:{omom2}/{environment-tools}.git
