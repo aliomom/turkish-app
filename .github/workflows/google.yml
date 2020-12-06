@@ -5,6 +5,7 @@ on:
   push:
     branches: [ dev ]
 
+
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: test    # TODO: update to cluster name
@@ -39,7 +40,8 @@ jobs:
         git remote rm origin 
         git config --global user.name "omom2"
         git config --global user.email "ali.ommoum@gmail.com"
-        git remote add origin https://omom2:${{ secrets.GHSECRETTOKEN }}@github.com/omom2/environment-tools.git
+        git remote add origin https://omom2:${{ secrets.PASS }}@github.com/omom2/environment-tools.git
+
 
         gh repo clone yes-soft-de/environment-tools
         cd $DEPLOYMENT_NAME
