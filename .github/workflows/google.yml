@@ -45,10 +45,10 @@ jobs:
         
         git config --global user.name "omom2"
         git config --global user.email "ali.ommoum@gmail.com"
-        git remote add origin https://omom2:${{ secrets.PASS }}@github.com/omom2/environment-tools.git
+        git remote add origin https://omom2:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
 
 
-        git clone  https://omom2:${{ secrets.PASS }}@github.com/omom2/environment-tools.git
+        git clone  https://omom2:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
         #git clone git@github.com:{omom2}/{environment-tools}.git
         cd $DEPLOYMENT_NAME
         gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME"sec"
