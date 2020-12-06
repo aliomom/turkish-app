@@ -37,7 +37,7 @@ jobs:
         # gh auth logout 
         echo ${{ secrets.GHSECRETTOKEN }} > token
         export GITHUB_TOKEN=${{ secrets.GHSECRETTOKEN }}
-        git config --global hub.protocol https
+        #git config --global hub.protocol https
         gh auth login --with-token < token
         git remote rm origin 
         git remote -v
@@ -45,7 +45,7 @@ jobs:
         
         git config --global user.name "omom2"
         git config --global user.email "ali.ommoum@gmail.com"
-        git remote add origin https://omom2:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
+        #git remote add origin https://omom2:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
 
 
         git clone  https://omom2:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
