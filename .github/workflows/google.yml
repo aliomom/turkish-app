@@ -30,7 +30,7 @@ jobs:
         export_default_credentials: true
 
     - run: |-
-       apt update
+        sudo apt update
       
       
         gcloud --quiet auth configure-docker
