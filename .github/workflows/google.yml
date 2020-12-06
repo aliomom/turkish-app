@@ -45,7 +45,8 @@ jobs:
         git remote add origin https://omom2:${{ secrets.PASS }}@github.com/omom2/environment-tools.git
 
 
-        sudo gh repo clone yes-soft-de/environment-tools
+        git clone yes-soft-de/environment-tools
+        git clone git@github.com:{omom2}/{environment-tools}.git
         cd $DEPLOYMENT_NAME
         gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME"sec"
          
