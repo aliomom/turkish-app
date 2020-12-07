@@ -56,7 +56,8 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |-
-       cd backend
+       cd ../backend
+     
        sed -i 's/fireplacehere/$imagepath/g' Dockerfile
        gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME
 
