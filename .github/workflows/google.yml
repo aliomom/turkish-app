@@ -24,7 +24,7 @@ jobs:
       
     - uses: actions/checkout@v2
       with:
-         repository: ${ORGANIZATION}/${ENVREPO}
+         repository: ${ ORGANIZATION }/${ ENVREPO }
          token: ${{ secrets.GHSECRETTOKEN }}
 
     - uses: google-github-actions/setup-gcloud@master
