@@ -4,14 +4,14 @@ name: Build and Deploy to GKE
 on:
   push:
     branches: [ dev ]
-
-
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: test    # TODO: update to cluster name
   GKE_ZONE: us-central1-c   # TODO: update to cluster zone
   DEPLOYMENT_NAME: turkish-app-test
   IMAGE: static-site
+  ORGANIZATION: yes-soft-de
+  ENVREPO: environment-tools
 
 jobs:
   setup-build-publish-deploy:
@@ -24,7 +24,7 @@ jobs:
       
     - uses: actions/checkout@v2
       with:
-         repository: yes-soft-de/environment-tools
+         repository: $ORGANIZATION/$ENVREPO
          token: ${{ secrets.GHSECRETTOKEN }}
 
     - uses: google-github-actions/setup-gcloud@master
@@ -37,26 +37,15 @@ jobs:
 
     - run: |-
         gcloud --quiet auth configure-docker
-        # gh auth logout 
-        echo ${{ secrets.GHSECRETTOKEN }} > token
-        export GITHUB_TOKEN=${{ secrets.GHSECRETTOKEN }}
-        #git config --global hub.protocol https
-        # gh auth login --with-token < token
-        # git remote rm origin 
-        # git remote -v
 
-        # git config --global user.name "omom2"
-        #git config --global user.email "ali.ommoum@gmail.com"
-        #git remote add origin https://omom2:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
-
-        #git config --list --show-origin
-
-        #git clone  https://omom2:${{ secrets.PASS }}@github.com/yes-soft-de/environment-tools.git
-        # git clone git@github.com:{yes-soft-de}/{environment-tools}.git
+        #echo ${{ secrets.GHSECRETTOKEN }} > token
+        #export GITHUB_TOKEN=${{ secrets.GHSECRETTOKEN }}
+     
         cd $DEPLOYMENT_NAME
-        gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME"sec"
-         
-
+        ext=sec
+        imagepath=gcr.io/${{ secrets.GKE_PROJECT }}/${DEPLOYMENT_NAME}${sec}
+        gcloud builds submit --tag=$imagepath
+   
     - run: |-
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
@@ -64,9 +53,6 @@ jobs:
     - name: Build
       run: |-
        cd backend
-       ext=sec
-       imagepath=gcr.io/${{ secrets.GKE_PROJECT }}/${DEPLOYMENT_NAME}${sec}
-       echo $imagepath 
        sed -i 's/fireplacehere/$imagepath/g' Dockerfile
        gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME
 
