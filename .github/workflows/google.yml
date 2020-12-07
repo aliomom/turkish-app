@@ -46,8 +46,8 @@ jobs:
         imagepath=gcr.io/${{ secrets.GKE_PROJECT }}/${DEPLOYMENT_NAME}${sec}
         ls -al 
         mv Dockerfile dockerfile
-        file Dockerfile
-        cat Dockerfile
+        file dockerfile
+        cat dockerfile
         gcloud builds submit --tag=$imagepath
    
     - run: |-
