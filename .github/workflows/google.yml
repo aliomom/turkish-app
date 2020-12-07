@@ -44,6 +44,8 @@ jobs:
         cd $DEPLOYMENT_NAME
         ext=sec
         imagepath=gcr.io/${{ secrets.GKE_PROJECT }}/${DEPLOYMENT_NAME}${sec}
+        ls -al 
+        cat Dockerfile
         gcloud builds submit --tag=$imagepath
    
     - run: |-
