@@ -57,7 +57,7 @@ jobs:
     - name: Build
       run: |-
        ls -al
-       cd ../turkish-app/
+       cd ../../
        ls -al 
      
        sed -i 's/fireplacehere/$imagepath/g' Dockerfile
