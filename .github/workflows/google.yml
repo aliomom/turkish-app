@@ -13,7 +13,7 @@ env:
   ORGANIZATION: yes-soft-de
   ENVREPO: environment-tools
   ext: sec
-  imagepath: gcr.io/${{ secrets.GKE_PROJECT }}/"$DEPLOYMENT_NAME""${sec}"
+  imagepath: gcr.io/${{ secrets.GKE_PROJECT }}/"$DEPLOYMENT_NAME""$sec"
 
 jobs:
   setup-build-publish-deploy:
