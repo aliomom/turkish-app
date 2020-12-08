@@ -62,8 +62,8 @@ jobs:
        ls -al
        cd backend
        ls -al 
-       ext=sec
-       imagepath=gcr.io/${{ secrets.GKE_PROJECT }}/"$DEPLOYMENT_NAME""$ext"
+       ext="$DEPLOYMENT_NAME""sec"
+       imagepath=gcr.io/${{ secrets.GKE_PROJECT }}/"$ext"
        sed -i "s/fireplacehere/${imagepath}/g" Dockerfile
        gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME
 
