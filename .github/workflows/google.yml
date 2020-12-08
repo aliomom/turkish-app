@@ -54,12 +54,12 @@ jobs:
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
     # Build the Docker image
-    - name: Checkout for ${DEPLOYMENT_NAME} repo 
+    - name: Checkout for $DEPLOYMENT_NAME repo 
       uses: actions/checkout@v2
   
     - run: |-
        ls -al
-       cd cd backend
+       cd backend
        ls -al 
      
        sed -i 's/fireplacehere/$imagepath/g' Dockerfile
