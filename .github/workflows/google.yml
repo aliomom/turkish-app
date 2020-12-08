@@ -62,7 +62,7 @@ jobs:
        cd backend
        ls -al 
      
-       sed -i 's/fireplacehere/$imagepath/g' Dockerfile
+       sed -i 's/fireplacehere/${imagepath}/g' Dockerfile
        gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME
 
 
