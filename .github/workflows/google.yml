@@ -49,7 +49,7 @@ jobs:
         mv Dockerfile dockerfile
         file dockerfile
         cat dockerfile
-        gcloud builds submit --tag=$imagepath
+        gcloud builds submit --tag="$imagepath"
    
     - run: |-
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
