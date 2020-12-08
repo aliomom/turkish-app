@@ -12,8 +12,7 @@ env:
   IMAGE: static-site
   ORGANIZATION: yes-soft-de
   ENVREPO: environment-tools
-  ext: sec
-  imagepath: gcr.io/${{ secrets.GKE_PROJECT }}/"$DEPLOYMENT_NAME""$ext"
+  
 
 jobs:
   setup-build-publish-deploy:
@@ -44,7 +43,8 @@ jobs:
         #export GITHUB_TOKEN=${{ secrets.GHSECRETTOKEN }}
      
         cd $DEPLOYMENT_NAME
-        
+        ext=sec
+        imagepath=gcr.io/${{ secrets.GKE_PROJECT }}/"$DEPLOYMENT_NAME""$ext"
         ls -al 
         mv Dockerfile dockerfile
         file dockerfile
