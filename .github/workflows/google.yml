@@ -44,7 +44,9 @@ jobs:
      
         cd $DEPLOYMENT_NAME
         ext=sec
+        
         imagepath=gcr.io/${{ secrets.GKE_PROJECT }}/"$DEPLOYMENT_NAME""$ext"
+        echo $imagepath
         ls -al 
         mv Dockerfile dockerfile
         file dockerfile
