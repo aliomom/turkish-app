@@ -69,12 +69,10 @@ jobs:
        echo $imagepath
        sed -Ei "s|fireplacehere|$imagepath|p" Dockerfile
        gcloud builds submit --tag=gcr.io/${{ secrets.GKE_PROJECT }}/$DEPLOYMENT_NAME
+       cd k8s
+       kubectl apply -f namespace.yaml
+       kubectl apply -f server.yaml
+       kubectl apply -f mysql.yaml
+       kubectl get services -o wide -n $DEPLOYMENT_NAME
 
 
-    - name: Deploy
-      run: |-
-        cd k8s
-        kubectl apply -f namespace.yaml
-        kubectl apply -f server.yaml
-        kubectl apply -f mysql.yaml
-        kubectl get services -o wide -n $DEPLOYMENT_NAME
