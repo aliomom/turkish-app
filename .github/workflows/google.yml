@@ -29,10 +29,13 @@ jobs:
          token: ${{ secrets.GHSECRETTOKEN }}
     - run: |
         mkdir $DEPLOYMENT_NAME
-        git commit -a "add new dir"
-        git push 
+        mkdir $DEPLOYMENT_NAME/jwt && cd $DEPLOYMENT_NAME/jwt
+        ssh-keygen -t rsa -b 4096
+        
+        
             
-
+        git commit -a "add project $DEPLOYMENT_NAME"
+        git push 
     - uses: google-github-actions/setup-gcloud@master
       with:
         version: '290.0.1'
