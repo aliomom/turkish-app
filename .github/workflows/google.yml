@@ -47,7 +47,7 @@ jobs:
     - run: |-
         gcloud --quiet auth configure-docker
 
-        #echo ${{ secrets.GHSECRETTOKEN }} > token
+        #eecho ${{ secrets.GHSECRETTOKEN }} > token
         #export GITHUB_TOKEN=${{ secrets.GHSECRETTOKEN }}
      
         cd $DEPLOYMENT_NAME
